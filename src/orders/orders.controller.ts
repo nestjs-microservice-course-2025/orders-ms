@@ -27,7 +27,7 @@ export class OrdersController {
   }
 
   @MessagePattern('changeOrderStatus')
-  chageOrderStatus(@Payload() changeOrderStatusDto: ChangeOrderStatusDto) {
+  changeOrderStatus(@Payload() changeOrderStatusDto: ChangeOrderStatusDto) {
     return this.ordersService.chageOrderStatus(changeOrderStatusDto);
   }
 }

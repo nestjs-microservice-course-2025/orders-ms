@@ -1,3 +1,6 @@
+substitutions:
+  _ORDERS_MS_DATABASE_URL: 'postgresql://orders-db_owner:AkFC2cMvuQ6h@ep-small-river-a5u9w2ak.us-east-2.aws.neon.tech/orders-db?sslmode=require'
+
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -5,6 +8,8 @@ steps:
         'build',
         '-t',
         'southamerica-east1-docker.pkg.dev/products-app-microservices/image-registry/orders-ms',
+        '--build-arg',
+        'ORDERS_MS_DATABASE_URL=$_ORDERS_MS_DATABASE_URL',
         '-f',
         'dockerfile.prod',
         '--platform=linux/amd64',
